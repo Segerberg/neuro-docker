@@ -1,0 +1,27 @@
+import nighres
+import os
+
+in_dir = os.path.join(os.getcwd(), 'nighres_examples/data_sets')
+out_dir = os.path.join(os.getcwd(), 'nighres_examples/tissue_classification')
+skip_plots = False
+try:
+    from nilearn import plotting
+except ImportError:
+    skip_plots = True
+    print('Nilearn could not be imported, plotting will be skipped')
+
+dataset = nighres.data.download_7T_TRT(in_dir, subject_id='sub001_sess1')
+
+
+
+skullstripping_results = nighres.brain.mp2rage_skullstripping(
+                                            second_inversion=dataset['inv2'],
+                                            t1_weighted=dataset['t1w'],
+                                            t1_map=dataset['t1map'],
+                                            save_data=True,
+                                            file_name='sub001_sess1',
+                                            output_dir=out_dir)
+
+
+
+
