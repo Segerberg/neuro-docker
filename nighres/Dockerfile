@@ -39,5 +39,5 @@ RUN curl -fsSL \
 ENV PATH="/opt/ants/bin:$PATH"
 ENV ANTSPATH="/opt/ants/bin"
 RUN chown -R 0:0 /opt/ants && chmod -R g=u /opt/ants
-
+RUN mkdir /safe/data
 USER 1001
